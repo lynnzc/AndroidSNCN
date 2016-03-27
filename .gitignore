@@ -1,0 +1,9 @@
+# build
+/build
+
+# local properties
+local.properties
+
+# iml
+*.iml
+
