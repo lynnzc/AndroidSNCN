@@ -2,14 +2,15 @@
 
   AndroidSNCN is a library which could make integration of social network sharing for multiple chinese platforms easier in your android app.  
   The library is still in development without reliable testing, so it might not be stable.  
-  more features would be added.  
+  more features would be added soon.  
 
 # Feature
-  This library offers social sharing for platforms:
-	- QQ / QZone  
-	- WeChat / WeChat Moment  
-	- Sina Weibo  
-	- Alipay Friends  
+
+  This library offers social sharing for platforms:  
+  - QQ / QZone  
+  - WeChat / WeChat Moment  
+  - Sina Weibo  
+  - Alipay Friends  
 
 # Getting started
 
