@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="60dp">
+
+    <ImageView
+        android:id="@+id/iv_qq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/shape_bg_circle"
+        android:scaleType="center"
+        android:src="@drawable/qq" />
+
+    <ImageView
+        android:id="@+id/iv_qzone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_qq"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/shape_bg_circle"
+        android:scaleType="center"
+        android:src="@drawable/qzone" />
+
+    <ImageView
+        android:id="@+id/iv_sina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_qzone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/shape_bg_circle"
+        android:scaleType="center"
+        android:src="@drawable/sina" />
+
+    <ImageView
+        android:id="@+id/iv_alipay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_sina"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/shape_bg_circle"
+        android:scaleType="center"
+        android:src="@drawable/alipay" />
+
+    <ImageView
+        android:id="@+id/iv_wechat_session"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_alipay"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/shape_bg_circle"
+        android:scaleType="center"
+        android:src="@drawable/wechat" />
+
+    <ImageView
+        android:id="@+id/iv_wechat_moments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_wechat_session"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/shape_bg_circle"
+        android:scaleType="center"
+        android:src="@drawable/moment" />
+</RelativeLayout>
