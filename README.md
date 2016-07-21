@@ -6,10 +6,10 @@
 
 # Feature
   This library offers social sharing for platforms:
-  	- QQ / QZone
-  	- WeChat / WeChat Moment
-  	- Sina Weibo
-  	- Alipay Friends
+	- QQ / QZone  
+	- WeChat / WeChat Moment  
+	- Sina Weibo  
+	- Alipay Friends  
 
 # Getting started
 
