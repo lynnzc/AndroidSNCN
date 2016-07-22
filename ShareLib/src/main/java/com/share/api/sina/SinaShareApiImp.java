@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.share.api.BaseShareApiImp;
 import com.share.api.ShareEnv;
+import com.share.api.utils.ThreadManager;
 import com.share.api.utils.ToastHelper;
+import com.sina.weibo.sdk.ApiUtils;
 import com.sina.weibo.sdk.api.WeiboMultiMessage;
 import com.sina.weibo.sdk.api.share.IWeiboHandler;
 import com.sina.weibo.sdk.api.share.IWeiboShareAPI;
@@ -17,6 +20,9 @@ import com.sina.weibo.sdk.auth.AuthInfo;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.auth.WeiboAuthListener;
 import com.sina.weibo.sdk.exception.WeiboException;
+
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 /**
  * 微博分享的api实现类
@@ -64,7 +70,7 @@ public class SinaShareApiImp extends BaseShareApiImp {
                 // TODO Auto-generated method stub
                 Oauth2AccessToken newToken = Oauth2AccessToken.parseAccessToken(bundle);
                 AccessTokenKeeper.writeAccessToken(context.getApplicationContext(), newToken);
-                ToastHelper.showToast(context, "onAuthorizeComplete token = " + newToken.getToken());
+//                ToastHelper.showToast(context, "onAuthorizeComplete token = " + newToken.getToken());
             }
 
             @Override
@@ -74,8 +80,13 @@ public class SinaShareApiImp extends BaseShareApiImp {
     }
 
     @Override
-    public void share(Activity activity) {
-        sendMultiMessage(activity);
+    public void share(final Activity activity) {
+        ThreadManager.runOnSingleThread(new Runnable() {
+            @Override
+            public void run() {
+                sendMultiMessage(activity);
+            }
+        });
 //        activity.finish();
     }
 
@@ -84,7 +95,6 @@ public class SinaShareApiImp extends BaseShareApiImp {
         if (response instanceof IWeiboHandler.Response) {
             mWeiboShareAPI.handleWeiboResponse(intent, (IWeiboHandler.Response) response);
         }
-        //释放callback
         setShareCallback(null);
     }
 
@@ -97,7 +107,7 @@ public class SinaShareApiImp extends BaseShareApiImp {
     public void shareWithClient(Context context, WeiboMultiMessage msg) {
         if (mWeiboShareAPI.isWeiboAppSupportAPI()) {
             /*ApiUtils.BUILD_INT_VER_2_2*/
-            if (mWeiboShareAPI.getWeiboAppSupportAPI() >= 10351) {
+            if (mWeiboShareAPI.getWeiboAppSupportAPI() >= ApiUtils.BUILD_INT_VER_2_2) {
                 this.msg = msg;
                 isClientOnly = true;
                 //跳转到新浪的分享回调activity
@@ -137,6 +147,7 @@ public class SinaShareApiImp extends BaseShareApiImp {
      */
     private void sendMultiMessage(Activity activity) {
         if (msg == null) {
+            ToastHelper.showToast(activity, "微博分享失败, 无法获取分享信息");
             return;
         }
 

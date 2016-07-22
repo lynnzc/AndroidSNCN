@@ -123,7 +123,7 @@ public class ShareDemoActivity extends AppCompatActivity implements View.OnClick
                 .setWebpage("http://www.baidu.com")
                 .setWebpageText("这个是分享的标题", "这个是分享  的描述")
                 .setWebpageThumbImage(bitmap)
-                .setText("分享测试")
+                .setText("sharing test text")
                 .setImage(bitmap)
                 .commit(); //只有调用commit才能分享
     }

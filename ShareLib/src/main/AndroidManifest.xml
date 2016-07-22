@@ -33,7 +33,7 @@
 
         <meta-data
             android:name="WEIBO_APPKEY"
-            android:value="1350719244" />
+            android:value="your_weibo_key" />
 
         <meta-data
             android:name="WEIBO_CHANNEL"
@@ -57,37 +57,22 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <activity
-            android:name="com.tencent.tauth.AuthActivity"
-            android:launchMode="singleTask"
-            android:noHistory="true"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <!-- 注意: 替换APP ID 时scheme里面必须保留tencent英文 -->
-                <data android:scheme="tencent1105217115" />
-            </intent-filter>
-        </activity>
-
-        <activity
             android:name="com.tencent.connect.common.AssistActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <!-- Wechat -->
         <!--<activity-->
-            <!--android:name=".wxapi.WXEntryActivity"-->
-            <!--android:exported="true"-->
-            <!--android:launchMode="singleTop"-->
-            <!--android:theme="@style/AppTheme.Platform">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.VIEW" />-->
-                <!--<category android:name="android.intent.category.DEFAULT" />-->
-                <!--&lt;!&ndash; APP ID &ndash;&gt;-->
-                <!--<data android:scheme="wx97c27936fc95bd6c" />-->
-            <!--</intent-filter>-->
+        <!--android:name=".wxapi.WXEntryActivity"-->
+        <!--android:exported="true"-->
+        <!--android:launchMode="singleTop"-->
+        <!--android:theme="@style/AppTheme.Platform">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.VIEW" />-->
+        <!--<category android:name="android.intent.category.DEFAULT" />-->
+        <!--&lt;!&ndash; APP ID &ndash;&gt;-->
+        <!--<data android:scheme="123456" />-->
+        <!--</intent-filter>-->
         <!--</activity>-->
     </application>
 </manifest>

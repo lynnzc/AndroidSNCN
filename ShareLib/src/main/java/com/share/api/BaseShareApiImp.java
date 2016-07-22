@@ -1,7 +1,5 @@
 package com.share.api;
 
-import android.content.Context;
-
 /**
  * share api基类
  * Created by Lynn on 3/28/16.
@@ -16,6 +14,4 @@ public abstract class BaseShareApiImp implements IShareApi {
     public void setShareCallback(IShareCallback callback) {
         this.callback = callback;
     }
-
-    public abstract void init(Context context);
 }

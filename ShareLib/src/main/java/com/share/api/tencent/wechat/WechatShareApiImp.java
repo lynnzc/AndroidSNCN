@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.share.api.BaseShareApiImp;
 import com.share.api.ShareEnv;
+import com.share.api.utils.ToastHelper;
 import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
 import com.tencent.mm.sdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.sdk.openapi.IWXAPI;
@@ -42,14 +43,19 @@ public class WechatShareApiImp extends BaseShareApiImp {
     public void init(Context context) {
         if (mIwxapi == null) {
             //通过WXAPIFactory 获得IWXAPI实例
-            mIwxapi = WXAPIFactory.createWXAPI(context.getApplicationContext(), ShareEnv.Wechat_APP_ID, true);
-            mIwxapi.registerApp(ShareEnv.Wechat_APP_ID);
+            mIwxapi = WXAPIFactory.createWXAPI(context.getApplicationContext(), ShareEnv.Wechat_APP_KEY, true);
+            mIwxapi.registerApp(ShareEnv.Wechat_APP_KEY);
         }
         shareType = 0;
     }
 
     @Override
     public void share(Activity activity) {
+        if (msg == null) {
+            ToastHelper.showToast(activity, "微信分享失败, 无法获取分享信息");
+            return;
+        }
+
         //创造一个Req
         SendMessageToWX.Req request = new SendMessageToWX.Req();
         //绑定资源
@@ -64,10 +70,8 @@ public class WechatShareApiImp extends BaseShareApiImp {
 
     @Override
     public void handleResponse(Intent intent, Object response) {
-        if (intent != null) {
-            if (response instanceof IWXAPIEventHandler) {
-                mIwxapi.handleIntent(intent, (IWXAPIEventHandler) response);
-            }
+        if (intent != null && response instanceof IWXAPIEventHandler) {
+            mIwxapi.handleIntent(intent, (IWXAPIEventHandler) response);
         }
     }
 

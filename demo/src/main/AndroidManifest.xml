@@ -23,6 +23,21 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- 注意: 替换APP ID 时scheme里面必须保留tencent英文, 如tencent123456 -->
+                <data android:scheme="tencentxxx" />
+            </intent-filter>
+        </activity>
+
         <!-- Wechat -->
         <activity
             android:name=".wxapi.WXEntryActivity"
@@ -32,7 +47,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <!-- APP ID -->
-                <data android:scheme="wx97c27936fc95bd6c" />
+                <data android:scheme="weichat_app_key" />
             </intent-filter>
         </activity>
     </application>

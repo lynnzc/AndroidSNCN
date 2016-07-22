@@ -12,6 +12,7 @@ import com.alipay.share.sdk.openapi.IAPApi;
 import com.alipay.share.sdk.openapi.SendMessageToZFB;
 import com.share.api.BaseShareApiImp;
 import com.share.api.ShareEnv;
+import com.share.api.utils.ThreadManager;
 
 /**
  * 支付宝分享api实现类
@@ -49,14 +50,18 @@ public class AlipayShareApiImp extends BaseShareApiImp {
             return;
         }
 
-        //包装请求信息
-        SendMessageToZFB.Req request = new SendMessageToZFB.Req();
-        request.message = msg;
-        request.transaction = buildTransaction();
-        //发送请求
-        mIAPApi.sendReq(request);
-        Log.d("alipay share", "分享调用");
-
+        ThreadManager.runOnSingleThread(new Runnable() {
+            @Override
+            public void run() {
+                //包装请求信息
+                SendMessageToZFB.Req request = new SendMessageToZFB.Req();
+                request.message = msg;
+                request.transaction = buildTransaction();
+                //发送请求
+                mIAPApi.sendReq(request);
+                Log.d("alipay share", "分享调用");
+            }
+        });
 //        activity.finish();
     }
 

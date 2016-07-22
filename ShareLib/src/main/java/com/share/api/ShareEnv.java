@@ -1,6 +1,7 @@
 package com.share.api;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.share.api.alipay.AlipayShareApiImp;
 import com.share.api.sina.SinaShareApiImp;
@@ -45,7 +46,7 @@ public class ShareEnv {
     public static final int SHARE_TO_WECHAT_Session = 5;
     public static final int SHARE_TO_WECHAT_MOMENTS = 6;
     public static final int SHARE_TO_WECHAT_FAVORITE = 7;
-    public static String Wechat_APP_ID;
+    public static String Wechat_APP_KEY;
 
     //Alipay
     /**
@@ -85,7 +86,7 @@ public class ShareEnv {
         QQ_APP_ID = "qq_app_id";
 
         //Wechat
-        Wechat_APP_ID = "wechat_app_id";
+        Wechat_APP_KEY = "wechat_app_id";
 
         //Alipay
         ALIPAY_APP_KEY = "alipay_app_key";
@@ -97,9 +98,10 @@ public class ShareEnv {
      */
     public static void initDebug() {
         //TODO only for debug
+
         //SINA
-        SINA_APP_KEY = "1350719244";
-        SINA_REDIRECT_URL = "http://www.baidu.com";
+        SINA_APP_KEY = "sina_debug_key";
+        SINA_REDIRECT_URL = "https://api.weibo.com/oauth2/default.html";
         SINA_SCOPE =
                 "email,direct_messages_read,direct_messages_write,"
                         + "friendships_groups_read,friendships_groups_write,statuses_to_me_read,"
@@ -107,13 +109,13 @@ public class ShareEnv {
 
         //QQ
         //QQZONE
-        QQ_APP_ID = "1105217115";
+        QQ_APP_ID = "qq_debug_key";
 
         //Wechat
-        Wechat_APP_ID = "wx97c27936fc95bd6c";
+        Wechat_APP_KEY = "wechat_debug_key";
 
         //Alipay
-        ALIPAY_APP_KEY = "2016032801248055";
+        ALIPAY_APP_KEY = "alipay_debug_key";
     }
 
     /**
