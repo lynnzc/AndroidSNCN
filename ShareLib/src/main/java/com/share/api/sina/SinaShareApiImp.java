@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.share.api.BaseShareApiImp;
+import com.share.api.KeyConfig;
 import com.share.api.ShareEnv;
 import com.share.api.utils.ThreadManager;
 import com.share.api.utils.ToastHelper;
@@ -51,7 +52,7 @@ public class SinaShareApiImp extends BaseShareApiImp {
     @Override
     public void init(final Context context) {
         // 创建微博分享接口实例
-        mWeiboShareAPI = WeiboShareSDK.createWeiboAPI(context.getApplicationContext(), ShareEnv.SINA_APP_KEY);
+        mWeiboShareAPI = WeiboShareSDK.createWeiboAPI(context.getApplicationContext(), KeyConfig.getWeiboAppKey());
         // 注册第三方应用到微博客户端中，注册成功后该应用将显示在微博的应用列表中。
         // 但该附件栏集成分享权限需要合作申请，详情请查看 Demo 提示
         // NOTE：请务必提前注册，即界面初始化的时候或是应用程序初始化时，进行注册
@@ -161,7 +162,7 @@ public class SinaShareApiImp extends BaseShareApiImp {
         if (isClientOnly) {
             mWeiboShareAPI.sendRequest(activity, request);
         } else {
-            AuthInfo authInfo = new AuthInfo(activity, ShareEnv.SINA_APP_KEY, ShareEnv.SINA_REDIRECT_URL, ShareEnv.SINA_SCOPE);
+            AuthInfo authInfo = new AuthInfo(activity, KeyConfig.getWeiboAppKey(), KeyConfig.getWeiboRedirectUrl(), KeyConfig.getWeiboScope());
             Oauth2AccessToken accessToken = AccessTokenKeeper.readAccessToken(activity.getApplicationContext());
             String token = "";
 

@@ -15,7 +15,8 @@ public class ShareDemoApplication extends Application {
     public void onCreate() {
         super.onCreate();
         // 初始化分享环境
-        ShareEnv.init(getApplicationContext(), !BuildConfig.DEBUG);
+        ShareEnv.init(getApplicationContext(),
+                "sina_debug", "qq_key", "wechat_key", "alipay_key");
         // 测试内存泄漏
         LeakCanary.install(this);
     }

@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.share.api.BaseShareApiImp;
+import com.share.api.KeyConfig;
 import com.share.api.ShareEnv;
+import com.share.api.utils.ThreadManager;
 import com.share.api.utils.ToastHelper;
 import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
 import com.tencent.mm.sdk.modelmsg.WXMediaMessage;
@@ -43,8 +45,8 @@ public class WechatShareApiImp extends BaseShareApiImp {
     public void init(Context context) {
         if (mIwxapi == null) {
             //通过WXAPIFactory 获得IWXAPI实例
-            mIwxapi = WXAPIFactory.createWXAPI(context.getApplicationContext(), ShareEnv.Wechat_APP_KEY, true);
-            mIwxapi.registerApp(ShareEnv.Wechat_APP_KEY);
+            mIwxapi = WXAPIFactory.createWXAPI(context.getApplicationContext(), KeyConfig.getWeChatAppKey(), true);
+            mIwxapi.registerApp(KeyConfig.getWeChatAppKey());
         }
         shareType = 0;
     }
@@ -56,16 +58,21 @@ public class WechatShareApiImp extends BaseShareApiImp {
             return;
         }
 
-        //创造一个Req
-        SendMessageToWX.Req request = new SendMessageToWX.Req();
-        //绑定资源
-        request.message = msg;
-        //用于唯一标识这个请求
-        request.transaction = buildTransaction();
-        //设置分享渠道
-        request.scene = getScene();
-        Log.d("wechat share", "send request");
-        mIwxapi.sendReq(request);
+        ThreadManager.runOnSingleThread(new Runnable() {
+            @Override
+            public void run() {
+                //创造一个Req
+                SendMessageToWX.Req request = new SendMessageToWX.Req();
+                //绑定资源
+                request.message = msg;
+                //用于唯一标识这个请求
+                request.transaction = buildTransaction();
+                //设置分享渠道
+                request.scene = getScene();
+                Log.d("wechat share", "send request");
+                mIwxapi.sendReq(request);
+            }
+        });
     }
 
     @Override

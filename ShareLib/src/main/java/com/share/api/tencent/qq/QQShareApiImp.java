@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.share.api.BaseShareApiImp;
+import com.share.api.KeyConfig;
 import com.share.api.ShareEnv;
 import com.share.api.utils.AppInstalledCheckHelper;
 import com.share.api.utils.ToastHelper;
@@ -41,7 +42,7 @@ public class QQShareApiImp extends BaseShareApiImp {
         // Tencent类是SDK的主要实现类，开发者可通过Tencent类访问腾讯开放的OpenAPI。
         // 其中APP_ID是分配给第三方应用的appid，类型为String。
         if (mTencent == null) {
-            mTencent = Tencent.createInstance(ShareEnv.QQ_APP_ID, context.getApplicationContext());
+            mTencent = Tencent.createInstance(KeyConfig.getQQAppId(), context.getApplicationContext());
         }
     }
 

@@ -33,7 +33,7 @@
 
         <meta-data
             android:name="WEIBO_APPKEY"
-            android:value="your_weibo_key" />
+            android:value="sine_debug_key" />
 
         <meta-data
             android:name="WEIBO_CHANNEL"
