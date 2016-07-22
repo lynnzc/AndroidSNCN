@@ -104,7 +104,7 @@ public class QQZoneShareBuilder {
                 return;
             }
             //分享到QQZone
-            QQShareApiImp.getInstance().shareWithContent(context, msg, ShareEnv.SHARE_TO_QQZONE);
+            QQShareApiImp.getInstance().shareWithContent(context, msg, ShareEnv.SHARE_TO_QZONE);
         }
     }
 }

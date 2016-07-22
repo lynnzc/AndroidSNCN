@@ -14,9 +14,9 @@ public class ShareDemoApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        //初始化分享用法
+        // 初始化分享环境
         ShareEnv.init(getApplicationContext(), !BuildConfig.DEBUG);
-        //TODO 测试内存泄漏
+        // 测试内存泄漏
         LeakCanary.install(this);
     }
 }

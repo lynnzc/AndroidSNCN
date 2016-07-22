@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.share.api.BaseShareApiImp;
 import com.share.api.ShareEnv;
+import com.share.api.utils.AppInstalledCheckHelper;
 import com.share.api.utils.ToastHelper;
 import com.tencent.tauth.Tencent;
 
@@ -20,7 +21,7 @@ public class QQShareApiImp extends BaseShareApiImp {
     private Bundle msg = null;
     /**
      * SHARE_TO_QQ = 3;
-     * SHARE_TO_QQZONE = 4;
+     * SHARE_TO_QZONE = 4;
      */
     private int shareType;
 
@@ -56,6 +57,13 @@ public class QQShareApiImp extends BaseShareApiImp {
             return;
         }
 
+        //判断是否安装 qq客户端
+        if (!AppInstalledCheckHelper.isQQClientInstalled(activity)) {
+            //not installed
+            ToastHelper.showToast(activity, "请先安装QQ客户端");
+            return;
+        }
+
         //分享调用
         switch (shareType) {
             default:
@@ -68,7 +76,7 @@ public class QQShareApiImp extends BaseShareApiImp {
                     }
                 });
                 break;
-            case ShareEnv.SHARE_TO_QQZONE:
+            case ShareEnv.SHARE_TO_QZONE:
                 //share to qqzone
                 activity.runOnUiThread(new Runnable() {
                     @Override
@@ -85,7 +93,6 @@ public class QQShareApiImp extends BaseShareApiImp {
     public void handleResponse(Intent intent, Object response) {
         if (response instanceof QQEntryActivity.QQResponse) {
             Log.d("request code", ((QQEntryActivity.QQResponse) response).getRequestCode() + "");
-//            Log.d("intent result", intent.getStringExtra("result") + "");
             Tencent.onActivityResultData(
                     ((QQEntryActivity.QQResponse) response).getRequestCode(),
                     ((QQEntryActivity.QQResponse) response).getResultCode(),

@@ -82,6 +82,7 @@ public class ShareDemoActivity extends AppCompatActivity implements View.OnClick
 //        } else {
 //            Log.d("nothing match", "nothing will continue");
 //        }
+
         //Resources Id cannot be used in a switch statement in Android Library
         switch (v.getId()) {
             default:

@@ -33,9 +33,9 @@ public class ShareEnv {
     public static String SINA_SCOPE;
 
     //QQ
-    //QQZONE
+    //QZONE
     public static final int SHARE_TO_QQ = 3;
-    public static final int SHARE_TO_QQZONE = 4;
+    public static final int SHARE_TO_QZONE = 4;
     /**
      * APP_ID For QQ here
      */
@@ -58,9 +58,9 @@ public class ShareEnv {
         //is release
         //Application Context
         if (isRelease) {
-            initRelease(context);
+            initRelease();
         } else {
-            initDebug(context);
+            initDebug();
         }
 
         //必须要先调用初始化才能使用, 不然会报错
@@ -69,20 +69,33 @@ public class ShareEnv {
 
     /**
      * Release 环境下的 APP ID / KEY等分享必须字段的初始化
-     *
-     * @param context
      */
-    public static void initRelease(Context context) {
+    public static void initRelease() {
+        //TODO only for release
+        //SINA
+        SINA_APP_KEY = "sina_app_key";
+        SINA_REDIRECT_URL = "redirect_url";
+        SINA_SCOPE =
+                "email,direct_messages_read,direct_messages_write,"
+                        + "friendships_groups_read,friendships_groups_write,statuses_to_me_read,"
+                        + "follow_app_official_microblog," + "invitation_write";
 
+        //QQ
+        //QQZONE
+        QQ_APP_ID = "qq_app_id";
+
+        //Wechat
+        Wechat_APP_ID = "wechat_app_id";
+
+        //Alipay
+        ALIPAY_APP_KEY = "alipay_app_key";
 
     }
 
     /**
      * Debug 环境下的APP ID / KEY等分享必须字段的初始化
-     *
-     * @param context
      */
-    public static void initDebug(Context context) {
+    public static void initDebug() {
         //TODO only for debug
         //SINA
         SINA_APP_KEY = "1350719244";
@@ -110,7 +123,7 @@ public class ShareEnv {
         //初始化新浪微博
         SinaShareApiImp.getInstance().init(context);
         //初始化QQ
-        //初始化QQZONE
+        //初始化QZONE
         QQShareApiImp.getInstance().init(context);
         //初始化Wechat
         WechatShareApiImp.getInstance().init(context);
