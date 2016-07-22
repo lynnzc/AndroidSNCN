@@ -1,4 +1,4 @@
-package com.share.api.apshare;
+package com.share.api.alipay;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,14 +8,14 @@ import com.alipay.share.sdk.openapi.BaseReq;
 import com.alipay.share.sdk.openapi.BaseResp;
 import com.alipay.share.sdk.openapi.IAPAPIEventHandler;
 import com.share.api.IShareCallback;
-import com.share.api.alipay.AlipayShareApiImp;
 import com.share.api.utils.ToastHelper;
 
 /**
- * 协助支付宝钱包分享response和调用callback的acitvity
- * Created by Lynn on 3/30/16.
+ * callback of Alipay share action
+ * Created by Lynn on 7/22/16.
  */
-public class ShareEntryActivity extends Activity implements IAPAPIEventHandler {
+
+public abstract class AlipayEntryHandler extends Activity implements IAPAPIEventHandler {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

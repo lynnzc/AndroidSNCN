@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 
 import com.share.api.IShareCallback;
 import com.share.api.IShareStep;
-import com.share.api.R;
 import com.share.api.ShareEnv;
 import com.tencent.connect.share.QQShare;
 

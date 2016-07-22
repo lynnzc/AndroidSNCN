@@ -117,7 +117,7 @@ public class ShareDemoActivity extends AppCompatActivity implements View.OnClick
         //TODO 封装后的调用过程
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
         //图片, 文本, 多媒体资源 一起使用, 不会冲突
-        ShareManager.shareToSina(this)
+        ShareManager.shareToWeibo(this)
                 .isClientOnly(false)
                 .setShareCallback(callback)
                 .setWebpage("http://www.baidu.com")

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.share.api">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 用于调用 JNI -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -33,22 +34,15 @@
 
         <meta-data
             android:name="WEIBO_APPKEY"
-            android:value="sine_debug_key" />
+            android:value="weibo_key" />
 
         <meta-data
             android:name="WEIBO_CHANNEL"
             android:value="weibo" />
 
         <!-- Alipay -->
-        <!--并在AndroidManifest文件里面加上exported属性，设置为true-->
 
-        <activity
-            android:name=".apshare.ShareEntryActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Platform" />
-
-        <!-- QQ / QQZone -->
+        <!-- QQ / QZone -->
         <activity
             android:name=".tencent.qq.QQEntryActivity"
             android:launchMode="singleTop"
@@ -60,19 +54,5 @@
             android:name="com.tencent.connect.common.AssistActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-        <!-- Wechat -->
-        <!--<activity-->
-        <!--android:name=".wxapi.WXEntryActivity"-->
-        <!--android:exported="true"-->
-        <!--android:launchMode="singleTop"-->
-        <!--android:theme="@style/AppTheme.Platform">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.VIEW" />-->
-        <!--<category android:name="android.intent.category.DEFAULT" />-->
-        <!--&lt;!&ndash; APP ID &ndash;&gt;-->
-        <!--<data android:scheme="123456" />-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
     </application>
 </manifest>

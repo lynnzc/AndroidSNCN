@@ -4,11 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.share.api.BaseShareApiImp;
 import com.share.api.KeyConfig;
-import com.share.api.ShareEnv;
 import com.share.api.utils.ThreadManager;
 import com.share.api.utils.ToastHelper;
 import com.sina.weibo.sdk.ApiUtils;
@@ -21,9 +19,6 @@ import com.sina.weibo.sdk.auth.AuthInfo;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.auth.WeiboAuthListener;
 import com.sina.weibo.sdk.exception.WeiboException;
-
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 /**
  * 微博分享的api实现类
@@ -96,7 +91,10 @@ public class SinaShareApiImp extends BaseShareApiImp {
         if (response instanceof IWeiboHandler.Response) {
             mWeiboShareAPI.handleWeiboResponse(intent, (IWeiboHandler.Response) response);
         }
-        setShareCallback(null);
+
+        if (getShareCallback() != null) {
+            setShareCallback(null);
+        }
     }
 
     /**

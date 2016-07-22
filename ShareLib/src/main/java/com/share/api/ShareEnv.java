@@ -1,12 +1,12 @@
 package com.share.api;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.share.api.alipay.AlipayShareApiImp;
 import com.share.api.sina.SinaShareApiImp;
 import com.share.api.tencent.qq.QQShareApiImp;
 import com.share.api.tencent.wechat.WechatShareApiImp;
+import com.share.api.utils.ThreadManager;
 
 /**
  * 分享环境 在application中初始化
@@ -30,7 +30,7 @@ public class ShareEnv {
     //Alipay
 
     //根据不同渠道来初始化分享
-    public static void init(Context context, String sinaKey, String qqkey, String wechatKey, String alipayKey) {
+    public static void init(final Context context, String sinaKey, String qqkey, String wechatKey, String alipayKey) {
         //APP ID / KEY等分享必须字段的初始化
         //SINA
         KeyConfig.initWeibo(sinaKey);
@@ -40,10 +40,15 @@ public class ShareEnv {
         //Wechat
         KeyConfig.initWeChat(wechatKey);
         //Alipay
-        KeyConfig.initAlipay(wechatKey);
+        KeyConfig.initAlipay(alipayKey);
 
         //必须要先调用初始化才能使用, 不然会报错
-        register(context);
+        ThreadManager.runOnSingleThread(new Runnable() {
+            @Override
+            public void run() {
+                register(context);
+            }
+        });
     }
 
     /**

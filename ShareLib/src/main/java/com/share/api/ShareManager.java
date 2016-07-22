@@ -9,7 +9,7 @@ import com.share.api.tencent.qq.qqzone.QQZoneShareBuilder;
 import com.share.api.tencent.wechat.WechatShareBuilder;
 
 /**
- * share wrapper helper
+ * share manager
  * Created by Lynn on 3/25/16.
  */
 public class ShareManager {
@@ -17,7 +17,7 @@ public class ShareManager {
     private ShareManager() {
     }
 
-    public static SinaShareBuilder.SinaPreferenceStep shareToSina(Context context) {
+    public static SinaShareBuilder.SinaPreferenceStep shareToWeibo(Context context) {
         return SinaShareBuilder.with(context);
     }
 

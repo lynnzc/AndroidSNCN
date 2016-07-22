@@ -140,8 +140,6 @@ public class WechatShareBuilder {
 
         @Override
         public IShareStep setImage(Bitmap bitmap, int thumbSize) {
-            //TODO 暂时用官方icon代替
-
             //初始化一个WXImageObject对象, 分享bitmap图片资源
             WXImageObject wxImageObject = new WXImageObject(bitmap);
             Bitmap thumbBmp = Bitmap.createScaledBitmap(bitmap, thumbSize, thumbSize, true);

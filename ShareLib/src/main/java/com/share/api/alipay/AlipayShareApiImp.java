@@ -12,7 +12,6 @@ import com.alipay.share.sdk.openapi.IAPApi;
 import com.alipay.share.sdk.openapi.SendMessageToZFB;
 import com.share.api.BaseShareApiImp;
 import com.share.api.KeyConfig;
-import com.share.api.ShareEnv;
 import com.share.api.utils.ThreadManager;
 
 /**

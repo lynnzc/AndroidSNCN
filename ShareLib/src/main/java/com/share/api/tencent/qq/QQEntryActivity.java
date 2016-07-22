@@ -3,8 +3,6 @@ package com.share.api.tencent.qq;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 
 import com.share.api.IShareCallback;
 import com.share.api.utils.ThreadManager;
@@ -82,7 +80,7 @@ public class QQEntryActivity extends Activity {
         return qqShareListener;
     }
 
-    public class QQResponse {
+    public static class QQResponse {
         private int requestCode;
         private int resultCode;
         private IUiListener qqShareListener;
